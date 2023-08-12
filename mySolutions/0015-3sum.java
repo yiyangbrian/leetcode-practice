@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 class Solution {
     private int sum(int[] nums, int i, int m, int j) {
         return nums[i] + nums[m] + nums[j];
