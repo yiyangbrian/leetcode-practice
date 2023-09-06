@@ -40,7 +40,7 @@ class Solution {
                             return LCA;
                         } else {
                             oneNodeFound = true;
-                            LCA = deque.peek().getKey();
+                            LCA = parent;
                         }
                     }
 
