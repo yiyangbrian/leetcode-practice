@@ -1,6 +1,8 @@
 import java.util.Arrays;
 
 class Solution {
+
+
     int count = 0;
 
     // n -> n x n, row -> the current cow being dealing with
