@@ -13,7 +13,6 @@ class Solution {
                 longest = Math.max(longest, lengthOfLIS(nums, i, memo) + 1);
             }
         }
-        lengthOfLIS(nums, index - 1, memo);
         memo[index] = longest;
         return longest;
     }
@@ -23,7 +22,9 @@ class Solution {
         int[] memo = new int[nums.length];
         Arrays.fill(memo, -1);
         int longest = 0;
-        lengthOfLIS(nums, nums.length - 1, memo);
+        for(int i = 0; i < nums.length; i ++) {
+            lengthOfLIS(nums, i, memo);
+        }
         for(int c : memo) {
             longest = Math.max(longest, c);
         }
