@@ -10,6 +10,7 @@ class Solution {
             for(int j = i; j < n; j ++) {
                 max = Math.max(max, jobDifficulty[j]);
             }
+            memo[i][d] = max;
             return max;
         }
         if(memo[i][d] == -1) {
@@ -27,8 +28,8 @@ class Solution {
     public int minDifficulty(int[] jobDifficulty, int d) {
         this.jobDifficulty = jobDifficulty;
         n = jobDifficulty.length;
-        memo = new int[n][d + 1];
         if(n < d) return -1;
+        memo = new int[n][d + 1];
         for(int i = 0; i < n; i ++) {
             for(int j = 0; j < d + 1; j ++) {
                 memo[i][j] = -1;
