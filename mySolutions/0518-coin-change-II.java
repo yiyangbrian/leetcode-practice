@@ -1,13 +1,27 @@
+import java.util.Arrays;
+
 class Solution {
-    public int change(int amount, int[] coins) {
-        int n = coins.length;
-        int[] dp = new int[amount + 1];
-        dp[0] = 1;
-        for(int i = n - 1; i >= 0; i --) {
-            for(int j = coins[i]; j <= amount; j ++) {
-                dp[j] += dp[j - coins[i]];
-            }
+    int[] coins;
+    int[][] memo;
+
+    private int dp(int i, int amount) {
+        if(amount < 0) return 0;
+        if(i == 0 && amount == 0) return 1;
+        if(i == 0 && amount > 0) return 0;
+
+        if(memo[i][amount] == -1) {
+            memo[i][amount] = dp(i, amount - coins[i - 1]) + dp(i - 1, amount);
         }
-        return dp[amount];
+
+        return memo[i][amount];
+    }
+
+    public int change(int amount, int[] coins) {
+        this.coins = coins;
+        memo = new int[coins.length + 1][amount + 1];
+        for(int[] row : memo) {
+            Arrays.fill(row, -1);
+        }
+        return dp(coins.length, amount);
     }
 }
