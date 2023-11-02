@@ -1,13 +1,13 @@
-import java.util.HashSet;
-import java.util.Set;
-
 class UnionFind {
+
     int[] parent;
     int[] weight;
+    int islands;
 
     public UnionFind(int n) {
         parent = new int[n];
         weight = new int[n];
+        islands = n;
 
         for(int i = 0; i < n; i ++) {
             parent[i] = i;
@@ -19,7 +19,7 @@ class UnionFind {
         if(parent[x] == x) {
             return x;
         }
-        return parent[x] = find(parent[x]);
+        return x = find(parent[x]);
     }
 
     public void union(int x, int y) {
@@ -33,7 +33,12 @@ class UnionFind {
                 parent[rootX] = rootY;
                 weight[rootY] += weight[rootX];
             }
+            islands --;
         }
+    }
+
+    public int getIslands() {
+        return islands;
     }
 }
 
@@ -41,18 +46,13 @@ class Solution {
     public int findCircleNum(int[][] isConnected) {
         int n = isConnected.length;
         UnionFind ds = new UnionFind(n);
-
         for(int i = 0; i < n; i ++) {
-            for(int j = 0; j < n; j ++) {
+            for(int j = i + 1; j < n; j ++) {
                 if(isConnected[i][j] == 1) {
                     ds.union(i, j);
                 }
             }
         }
-        Set<Integer> set = new HashSet<>();
-        for(int i = 0; i < n; i ++) {
-            set.add(ds.find(i));
-        }
-        return set.size();
+        return ds.getIslands();
     }
 }
