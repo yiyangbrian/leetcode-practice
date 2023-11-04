@@ -43,7 +43,7 @@ class Solution {
             int cur = edge[0];
             int next = edge[1];
             int dist = manhattan(cur, next);
-            System.out.println(cur + " -> " + next + ": " + dist);
+
             visited[next] = 1;
             cost += dist;
             count ++;
