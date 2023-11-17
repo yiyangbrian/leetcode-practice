@@ -1,7 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
 char *mergeAlternately(char *word1, char *word2)
 {
     int len1 = strlen(word1);
@@ -23,19 +19,5 @@ char *mergeAlternately(char *word1, char *word2)
         }
     }
     result[k] = '\0';
-
     return result;
-}
-
-int main()
-{
-    char word1[] = "Hello";
-    char word2[] = "World";
-
-    char *merged = mergeAlternately(word1, word2);
-    printf("Merged string: %s\n", merged);
-
-    free(merged); // 释放动态分配的内存
-
-    return 0;
 }
