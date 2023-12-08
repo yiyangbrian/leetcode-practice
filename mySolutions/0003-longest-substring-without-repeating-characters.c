@@ -9,7 +9,6 @@ int lengthOfLongestSubstring(char *s)
         {
             count[s[i]]++;
             len++;
-            max = len > max ? len : max;
         }
         else
         {
@@ -19,7 +18,6 @@ int lengthOfLongestSubstring(char *s)
                 if (s[j] == s[i])
                 {
                     found = 1;
-                    max = i - j > max ? i - j : max;
                     len = i - j;
                     break;
                 }
@@ -27,9 +25,9 @@ int lengthOfLongestSubstring(char *s)
             if (!found)
             {
                 len++;
-                max = max > len ? max : len;
             }
         }
+        max = len > max ? len : max;
     }
     return max;
 }
