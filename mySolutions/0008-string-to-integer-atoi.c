@@ -4,7 +4,7 @@ int myAtoi(char *s)
     long n = 0;
     int sign = 0;
 
-    while (*s == ' ' || *s == '\t')
+    while (*s == ' ')
     {
         s++;
     }

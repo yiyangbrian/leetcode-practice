@@ -32,9 +32,9 @@ int** levelOrderBottom(struct TreeNode* root, int* returnSize, int** returnColum
     }
     int size = 1;
     *returnSize = 0;
-    int **results = malloc(800 * sizeof(int *));
-    *returnColumnSizes = malloc(800 * sizeof(int));
-    memset(*returnColumnSizes, 0, 800 * sizeof(int));
+    int **results = malloc(2000 * sizeof(int *));
+    *returnColumnSizes = malloc(2000 * sizeof(int));
+    memset(*returnColumnSizes, 0, 2000 * sizeof(int));
     bfs(root, results, returnSize, *returnColumnSizes, &size, 0);
 
     int i, j;
